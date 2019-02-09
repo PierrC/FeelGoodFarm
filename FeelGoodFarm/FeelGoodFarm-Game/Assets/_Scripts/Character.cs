@@ -25,25 +25,34 @@ public class Character : Pawn
     Vector2 vector = new Vector2();
     private void Update()
     {
-        float moveHorizontal = Input.GetAxisRaw("Horizontal");
-        float moveVertical = Input.GetAxisRaw("Vertical");
-
-        vector = new Vector2(moveHorizontal, moveVertical).normalized / 1f;
-
-        Hub_Move(vector);
-
-
-        if (Input.GetKeyDown(KeyCode.E))
+        if (DialogueManager.GetInstance().inDialogue)
         {
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                if (pawn != null)
-                {
-                    pawn.TriggerDialogue();
+                DialogueManager.GetInstance().DisplayNextSentence();
+            }
+        }
+        else
+        {
+            float moveHorizontal = Input.GetAxisRaw("Horizontal");
+            float moveVertical = Input.GetAxisRaw("Vertical");
 
-                }
-                else
+            vector = new Vector2(moveHorizontal, moveVertical).normalized / 1f;
+
+            Hub_Move(vector);
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
                 {
-                    textMeshPro.text = "";
+                    if (pawn != null)
+                    {
+                        pawn.TriggerDialogue();
+
+                    }
+                    else
+                    {
+                        textMeshPro.text = "";
+                    }
                 }
             }
         }
@@ -67,7 +76,6 @@ public class Character : Pawn
         if (other.gameObject == pawn.gameObject)
         {
             pawn = null;
-            textMeshPro.text = "";
         }
     }
 

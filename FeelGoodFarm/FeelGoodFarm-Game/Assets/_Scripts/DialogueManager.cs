@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    private static DialogueManager dialogueManager;
+
+
+    public bool inDialogue;
 
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI DialogueText;
@@ -14,13 +18,22 @@ public class DialogueManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        timer = 0;
+        dialogueManager = this;
+        inDialogue = false;
         sentences = new Queue<string>();
+    }
+
+    public static DialogueManager GetInstance()
+    {
+        return dialogueManager;
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
         Debug.Log("Starting conversation with " + dialogue.name);
         nameText.text = dialogue.name;
+        inDialogue = true;
         sentences.Clear();
         foreach(string sentence in dialogue.sentences)
         {
@@ -29,18 +42,24 @@ public class DialogueManager : MonoBehaviour
         DisplayNextSentence();
     }
 
+    public float timer;
     public void DisplayNextSentence()
     {
-        if(sentences.Count == 0)
-        {
-            EndDialogue();
-            return;
-        }
+     //   if (Time.time > timer + 0.5f)
+   //     {
+            if (sentences.Count == 0)
+            {
+                EndDialogue();
+                return;
+            }
 
-        string sentence = sentences.Dequeue();
-        // DialogueText.text = sentence;
-        StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence));
+            string sentence = sentences.Dequeue();
+            // DialogueText.text = sentence;
+            StopAllCoroutines();
+            StartCoroutine(TypeSentence(sentence));
+            timer = Time.time;
+
+      //  }
     }
 
     IEnumerator TypeSentence (string sentence)
@@ -55,6 +74,9 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
+        nameText.text = "";
+        DialogueText.text = "";
+        inDialogue = false;
         Debug.Log("End of conversation");
     }
 }
