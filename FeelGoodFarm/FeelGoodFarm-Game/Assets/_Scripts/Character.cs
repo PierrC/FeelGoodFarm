@@ -91,6 +91,10 @@ public class Character : Pawn
         {
             Debug.Log("Correct tag");
             pawn = collision.gameObject.GetComponent<NPC>();
+            if (pawn == null)
+            {
+                pawn = collision.gameObject.GetComponent<pianoscript>();
+            }
         }
     }
 
