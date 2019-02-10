@@ -55,10 +55,33 @@ public class Character : Pawn
                     }
                 }
             }
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                PlantTreeTest();
+            }
         }
     }
     // Update is called once per frame
 
+    Vector3 buffer = new Vector3(-0.1f, -0.1f, -0.1f);
+    public GameObject treePrefab;
+    private void PlantTree(TreeData.Emotion pEmotion, string pmessage)
+    {
+        GameObject obj = Instantiate(treePrefab, transform.position + buffer, new Quaternion());
+        obj.GetComponent<TreeData>().emotion = pEmotion;
+        obj.GetComponent<TreeData>().message = pmessage;
+
+        DataManager.GetInstance().AddTreeData(obj.GetComponent<TreeData>());
+    }
+
+    private void PlantTreeTest()
+    {
+        GameObject obj = Instantiate(treePrefab, transform.position + buffer, new Quaternion());
+        obj.GetComponent<TreeData>().emotion = TreeData.Emotion.YELLOW;
+        obj.GetComponent<TreeData>().message = "Test Tree";
+
+        DataManager.GetInstance().AddTreeData(obj.GetComponent<TreeData>());
+    }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -73,7 +96,6 @@ public class Character : Pawn
 
     private void OnTriggerExit2D(Collider2D other)
     {
-
         if (pawn != null && other.gameObject == pawn.gameObject)
         {
             pawn = null;
