@@ -6,8 +6,8 @@ public class SoundTrigger : MonoBehaviour
 {
     public AudioClip triggerBeachSound;
     AudioSource audioSource;
-    public float fadeOutFactor = 0.08f;
-    public float fadeInFactor = 0.08f;
+    public float fadeOutFactor = 0.2f;
+    public float fadeInFactor = 0.2f;
 
     private bool fadeInOut = false;
 
