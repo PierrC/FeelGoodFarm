@@ -61,7 +61,7 @@ public class DataManager : MonoBehaviour
                 Debug.Log("Load done");
                 Debug.Log("Td position:" + td.position);
                 trees.Add(Instantiate(LibraryOfPrefabs.GetInstance().prefabs[1]).GetComponent<TreeData>());
-                trees[trees.Count - 1].transform.position = Vector3.zero;// = td.position;
+                trees[trees.Count - 1].transform.position = td.position;// = td.position;
                                                                          //  trees[trees.Count - 1].transform.position = trees[trees.Count - 1].position;
             }
             //Debug.Log("Load Tree count size: " + LoadTrees().Count);
@@ -86,7 +86,7 @@ public class DataManager : MonoBehaviour
         List<TreeDataSerializable> saves = new List<TreeDataSerializable>();
         foreach(TreeData treeData in trees)
         {
-            saves.Add(new TreeDataSerializable(treeData));
+            saves.Add(new TreeDataSerializable(treeData.emotion, treeData.state, treeData.message, treeData.date, treeData.position));
         }
         string jsonStringTrees = JsonConvert.SerializeObject(saves);
 
@@ -122,20 +122,20 @@ class TreeDataSerializable
         position = pvector3;
     }
 
-    public TreeDataSerializable(TreeData treeData)
-    {
-        emotion = new Emotion();
-        state = new TreeState();
-        message = "";
-        date = new DateTime();
-        position = new Vector3();
+    //public TreeDataSerializable(TreeData treeData)
+    //{
+    //    emotion = new Emotion();
+    //    state = new TreeState();
+    //    message = "";
+    //    date = new DateTime();
+    //    position = new Vector3();
 
-        emotion = treeData.emotion;
-        state = treeData.state;
-        message = treeData.message;
-        date = treeData.date;
-        position = treeData.position;
-    }
+    //    emotion = treeData.emotion;
+    //    state = treeData.state;
+    //    message = treeData.message;
+    //    date = treeData.date;
+    //    position = treeData.position;
+    //}
 
 
     public Emotion emotion;
