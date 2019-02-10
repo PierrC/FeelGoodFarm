@@ -47,7 +47,7 @@ public class DialogueManager : MonoBehaviour
     {
      //   if (Time.time > timer + 0.5f)
    //     {
-            if (sentences.Count == 0)
+            if (DialogueText.text == "")
             {
                 EndDialogue();
                 return;

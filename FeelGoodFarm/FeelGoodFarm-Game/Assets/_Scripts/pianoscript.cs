@@ -8,6 +8,7 @@ public class pianoscript : Pawn
     // Start is called before the first frame update
     public override void TriggerDialogue()
     {
+        DataManager.SaveTrees();
         SceneManager.LoadScene("PianoMinigame");
     }
 }

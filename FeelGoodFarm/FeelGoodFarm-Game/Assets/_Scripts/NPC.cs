@@ -12,13 +12,14 @@ public class NPC : Pawn
         if(dialogue != null)
         {
             dialogue.name = Name;
+
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 
@@ -26,5 +27,6 @@ public class NPC : Pawn
     {
         Debug.Log("You are talking with me.");
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+
     }
 }

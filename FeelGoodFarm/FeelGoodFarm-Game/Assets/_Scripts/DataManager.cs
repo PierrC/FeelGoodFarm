@@ -37,6 +37,8 @@ public class DataManager : MonoBehaviour
     void Start()
     {
 
+        LoadTreesFunction();
+
     }
 
     // Update is called once per frame
@@ -78,7 +80,7 @@ public class DataManager : MonoBehaviour
 
     }
 
-    static void SaveTrees()
+    public static void SaveTrees()
     {
 
         Debug.Log("Before serialization");
@@ -94,6 +96,24 @@ public class DataManager : MonoBehaviour
         using (StreamWriter streamWriter = File.CreateText(treeDataPath))
         {
             streamWriter.Write(jsonStringTrees);
+        }
+    }
+
+    void LoadTreesFunction()
+    {
+        while (trees.Count != 0)
+        {
+            TreeData treeData = trees[0];
+            trees.RemoveAt(0);
+            Destroy(treeData.gameObject);
+        }
+        foreach (TreeDataSerializable td in LoadTrees())
+        {
+            Debug.Log("Load done");
+            Debug.Log("Td position:" + td.position);
+            trees.Add(Instantiate(LibraryOfPrefabs.GetInstance().prefabs[1]).GetComponent<TreeData>());
+            trees[trees.Count - 1].transform.position = td.position;// = td.position;
+                                                                    //  trees[trees.Count - 1].transform.position = trees[trees.Count - 1].position;
         }
     }
 
