@@ -22,7 +22,13 @@ public class SoundTrigger : MonoBehaviour
     void Update()
     {
         if (audioSource.volume <= 0.0f) { audioSource.Stop(); }
-        if (audioSource.volume >= 0.1f) { audioSource.PlayOneShot(triggerBeachSound, 0.1f); }
+        if (audioSource.volume >= 0.1f) {
+            if (audioSource.isPlaying == false)
+            {
+                audioSource.PlayOneShot(triggerBeachSound, 0.1f);
+            }
+        
+        }
         if (fadeInOut == true)
         {
             if (audioSource.volume < 1.0f)
@@ -54,11 +60,11 @@ public class SoundTrigger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (audioSource.volume <= 0.0f)
-        {
+        //if (audioSource.volume <= 0.0f)
+        //{
             fadeInOut = false;
             //audioSource.Stop();
-        }
+        //}
 
     }
 
