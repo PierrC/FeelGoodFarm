@@ -65601,6 +65601,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerBeachSound: {fileID: 8300000, guid: 7d3bb6258e8bf4e75a0fca4a315ad70b, type: 3}
+  fadeOutFactor: 0.08
+  fadeInFactor: 0.08
 --- !u!61 &1156650324
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -65818,6 +65820,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerBeachSound: {fileID: 8300000, guid: a046897ed16fa42abbcb4b9203625a6f, type: 3}
+  fadeOutFactor: 0.08
+  fadeInFactor: 0.08
 --- !u!61 &1245689516
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -66715,6 +66719,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerBeachSound: {fileID: 8300000, guid: 7af5d4f13e39d4905b5a212b213aa89c, type: 3}
+  fadeOutFactor: 0.08
+  fadeInFactor: 0.08
 --- !u!61 &2040665990
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -66923,7 +66929,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 955445dbef43f44be9b4e17011257f70, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.174
+  m_Volume: 0.508
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -67020,6 +67026,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerBeachSound: {fileID: 8300000, guid: 955445dbef43f44be9b4e17011257f70, type: 3}
+  fadeOutFactor: 0.08
+  fadeInFactor: 0.08
 --- !u!1 &2110112125
 GameObject:
   m_ObjectHideFlags: 0
