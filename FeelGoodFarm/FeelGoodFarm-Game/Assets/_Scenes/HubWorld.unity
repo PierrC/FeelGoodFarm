@@ -70908,5 +70908,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1780953959961674458, guid: 93df8aa22dac86b43ab52189c4189004,
+        type: 3}
+      propertyPath: dialogue.name
+      value: Mayor
+      objectReference: {fileID: 0}
+    - target: {fileID: 1780953959961674458, guid: 93df8aa22dac86b43ab52189c4189004,
+        type: 3}
+      propertyPath: dialogue.sentences.Array.data[0]
+      value: 'Hi! '
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93df8aa22dac86b43ab52189c4189004, type: 3}
