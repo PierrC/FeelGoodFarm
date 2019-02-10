@@ -73,7 +73,8 @@ public class Character : Pawn
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject == pawn.gameObject)
+
+        if (pawn != null && other.gameObject == pawn.gameObject)
         {
             pawn = null;
         }
